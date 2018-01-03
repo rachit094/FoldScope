@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">FoldScope</string>
+    <string name="api_no_internet_msg">Please check internet connection.</string>
+    <string name="title_activity_guest_user">GuestUser</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_register_user">RegisterUser</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="user_story">Home</string>
+    <string name="camera">Camera</string>
+    <string name="menu">Menu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="foldScope_sticker_identification_code">FoldScope Sticker Identification Code:</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="license_agreement">License Agreement</string>
+    <string name="accept_agreement">Accept the License Agreement:</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="username_or_email">Username or Email:</string>
+    <string name="get_new_password">Get New Password</string>
+
+    <string name="enter_username">Username is Required Field.</string>
+    <string name="enter_email">Email Id is Required Field.</string>
+    <string name="enter_valid_email">Enter Valid Email Address.</string>
+    <string name="enter_password">Password is Required Field.</string>
+    <string name="match_password">Password Does Not Match.</string>
+    <string name="enter_correct_password">Please Enter Correct Password.</string>
+    <string name="enter_firstname">Fullname is Required Field.</string>
+    <string name="enter_lastname">Lastname is Required Field.</string>
+    <string name="enter_code">Code is Required Field.</string>
+    <string name="enter_valid_code">Please Enter Valid Code.</string>
+    <string name="check_licence">Please Accept Licence Agreement.</string>
+
+    <string name="select_image">Select an Image</string>
+    <string name="select_image_fail">Select an image (failure demo)</string>
+    <string name="select_video">Select a Video</string>
+    <string name="select_video_fail">Select a video (failure demo)</string>
+    <string name="select_image_slow_network">Select an image (slow network demo)</string>
+    <string name="server_error">Server Error!Please Try again Later.</string>
+    <string name="please_wait">Please Wait.</string>
+    <string name="user_exist">User Already Exists.</string>
+    <string name="user_not_exist">Your Username is Not Register with us.</string>
+    <string name="connection_error">Please Connect to internet.</string>
+    <string name="registration_completed">Registration is Successfully,Please Login.</string>
+    <string name="error_login">Your Username or Password is incorrect.</string>
+
+    <string name="stop_video">Please Stop Video First.</string>
+    <string name="fail_video">Failed to Create Video.</string>
+    <string name="not_zoom">Zoom Not Available.</string>
+    <string name="logout">Are you sure you want to Logout?</string>
+    <string name="upload_post">Successfully Publish Your Post.</string>
+    <string name="upload_media">Successfully Upload Media.</string>
+
+    <string name="search">Please Enter Keyword.</string>
+    <string name="enter_title">Please Enter Title.</string>
+    <string name="enter_content">Please Enter Content.</string>
+
+    <string name="title_placeholder">Post Title</string>
+    <string name="content_placeholder">Share your Story here...</string>
+
+
+</resources>

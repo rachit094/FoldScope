@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Activity.MyExperiment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/colorTradewind">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/sp_category"
+            android:background="@color/colorTradewind"
+            android:popupBackground="@color/colorTradewind"
+            android:prompt="@color/colorWhite"
+            android:layout_marginLeft="@dimen/dp10"
+            ></Spinner>
+        <ImageView
+            android:layout_width="@dimen/dp22"
+            android:layout_height="@dimen/dp22"
+            android:id="@+id/img_search"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_centerVertical="true"
+            android:src="@drawable/search"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_my_experience">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorGrey"
+        android:text="Sorry,There is no any Blog to view"
+        android:paddingTop="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp20"
+        android:textSize="@dimen/dp20"
+        android:id="@+id/tv_msg"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+</LinearLayout>

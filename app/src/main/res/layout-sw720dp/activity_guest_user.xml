@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Activity.GuestUser">
+
+    <include layout="@layout/layout_home"
+        android:id="@+id/home_layout" />
+
+    <include layout="@layout/layout_camera"
+        android:id="@+id/camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@+id/navigation"/>
+
+    <include layout="@layout/layout_login"
+        android:id="@+id/login_layout"
+        android:visibility="gone"/>
+
+    <include layout="@layout/layout_menu_gu"
+        android:id="@+id/profile_gu__layout"
+        android:visibility="gone"/>
+
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/selector"
+        android:background="@color/colorLochinvar"
+        app:itemTextColor="@color/colorWhite"
+        app:menu="@menu/navigation_guest_user" />
+
+</RelativeLayout>

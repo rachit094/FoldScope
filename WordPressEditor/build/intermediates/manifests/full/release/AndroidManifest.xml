@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.wordpress.android.editor"
+    android:versionCode="13"
+    android:versionName="1.3" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="25" />
+>
+    <application>
+        <activity android:name="org.wordpress.android.editor.legacy.EditLinkActivity" />
+    </application>
+
+</manifest>

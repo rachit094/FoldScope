@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Activity.RegisterUser">
+
+    <include layout="@layout/layout_home"
+        android:id="@+id/home_layout" />
+
+    <include layout="@layout/layout_camera"
+        android:id="@+id/camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@+id/navigation_ru"/>
+
+    <include layout="@layout/layout_create_blog"
+        android:id="@+id/create_blog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@+id/navigation_ru"/>
+
+    <include layout="@layout/layout_menu_ru"
+        android:id="@+id/profile_ru_layout"
+        android:visibility="gone"/>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation_ru"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@drawable/selector"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorLochinvar"
+        app:itemTextColor="@color/colorWhite"
+        app:menu="@menu/navigation" />
+
+</RelativeLayout>

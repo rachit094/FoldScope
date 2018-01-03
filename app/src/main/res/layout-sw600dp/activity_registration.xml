@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorTradewind"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Activity.Registration">
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="@dimen/dp150"
+        android:layout_height="@dimen/dp150"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginBottom="@dimen/dp20"
+        android:src="@drawable/logo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/username"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg__username"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/email"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg__email"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/first_name"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg__firstname"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/last_name"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg__lastname"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/foldScope_sticker_identification_code"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/req_code"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/password"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg__password"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/confirm_password"
+                android:theme="@style/EditTextHint">
+
+                <EditText
+                    android:id="@+id/reg_confrimpassword"
+                    android:layout_width="@dimen/dp300"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textSize="@dimen/dp15"
+                    android:textColor="@color/colorWhite" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_license_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/dp35"
+                android:layout_marginTop="@dimen/dp10"
+                android:textSize="@dimen/dp12"
+                android:backgroundTint="@color/colorTradewind"
+                android:text="@string/license_agreement"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/et_license_agreement"
+                android:layout_width="@dimen/dp300"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingLeft="@dimen/dp2"
+                android:paddingRight="@dimen/dp2"
+                android:background="@drawable/background_all_round"
+                android:backgroundTint="@color/colorWhite"
+                android:inputType="textMultiLine"
+                android:text="Please read this Agreement carefully before accessing or using our Services. By accessing or using any part of our Services, you agree to become bound by the Terms of this Agreement. If you do not agree to all the Terms of this Agreement, then you may not access or use any of our Services. If these Terms are considered an offer by Automattic, acceptance is expressly limited to these Terms."
+                android:textSize="@dimen/dp12" />
+
+            <CheckBox
+                android:id="@+id/reg_licence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/dp45"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/accept_agreement"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/b_registration"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/background_all_round"
+                android:backgroundTint="@color/colorDarkTradewind"
+                android:text="@string/register"
+                android:textSize="@dimen/dp15"
+                android:textColor="@color/colorWhite" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

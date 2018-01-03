@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGrey"
+    tools:context="com.example.blackpearl.foldscope.Fragment.Home">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:id="@+id/rl123"
+        android:background="@color/colorTradewind">
+
+        <Spinner
+            android:id="@+id/sp_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTradewind"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/colorTradewind"
+            android:src="@drawable/search" />
+
+    </RelativeLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl123">
+    <!-- TODO: Update blank fragment layout -->
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_user_story"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/tv_msg1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Sorry,There is no any Post to view, Please Pull to Refresh"
+        android:textColor="@color/colorTradewind"
+        android:layout_below="@+id/rl123"
+        android:textSize="@dimen/dp20"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/colorLochinvar">
+
+        <ImageView
+            android:id="@+id/img_ad_story"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp180"
+            android:layout_marginLeft="@dimen/dp1"
+            android:layout_marginRight="@dimen/dp1"
+            android:layout_marginTop="@dimen/dp1"
+            android:scaleType="fitXY"
+            android:src="@drawable/test" />
+
+        <TextView
+            android:id="@+id/tv_ad_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/img_ad_story"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="@dimen/dp1"
+            android:layout_marginRight="@dimen/dp1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="@dimen/dp2"
+            android:text="Test Title"
+            android:textColor="@color/colorLochinvar"
+            android:textSize="@dimen/dp20" />
+
+        <TextView
+            android:id="@+id/tv_ad_disc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ad_title"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="@dimen/dp1"
+            android:layout_marginRight="@dimen/dp1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="@dimen/dp2"
+            android:text="Title, featured image (if available), brief about the blog, author image, author name, date posted on will be shown in a list view manner"
+            android:textSize="@dimen/dp12" />
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ad_disc"
+            android:layout_marginLeft="@dimen/dp1"
+            android:layout_marginRight="@dimen/dp1"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp3"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp2"
+                android:text="AUGUST 31,2017"
+                android:textColor="@color/colorTradewind"
+                android:textSize="@dimen/dp12" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_is_publish"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/dp15"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginTop="@dimen/dp5"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingLeft="@dimen/dp2"-->
+            <!--android:paddingRight="@dimen/dp2"-->
+            <!--android:text="DRAFT"-->
+            <!--android:textColor="@color/colorTradewind"-->
+            <!--android:textSize="@dimen/dp12" />-->
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:layout_below="@+id/rl"
+            android:background="@color/colorLochinvar"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_preview"
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/dp5"
+                    android:src="@drawable/file" />
+
+                <TextView
+                    android:id="@+id/txtv_preview"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_toEndOf="@+id/img_preview"
+                    android:gravity="center"
+                    android:text="Preview"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/dp12" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/txtv_delete"
+                    android:src="@drawable/delete" />
+
+                <TextView
+                    android:id="@+id/txtv_delete"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/dp12" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

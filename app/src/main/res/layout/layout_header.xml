@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/dp22"
+        android:layout_height="@dimen/dp20"
+        android:src="@drawable/iconback"
+        android:id="@+id/img_back"
+        android:visibility="gone"
+        android:layout_marginLeft="0dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"/>
+    <TextView
+        android:layout_width="@dimen/dp50"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_draft"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="@dimen/dp15"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorLochinvar"
+        android:backgroundTint="@color/colorWhite"
+        android:background="@drawable/background_all_round"
+        android:layout_toEndOf="@+id/img_back"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"
+        android:visibility="gone"
+        android:textSize="@dimen/dp15"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorWhite"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="@dimen/dp70"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_publish"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="@dimen/dp15"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorLochinvar"
+        android:backgroundTint="@color/colorWhite"
+        android:background="@drawable/background_all_round"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

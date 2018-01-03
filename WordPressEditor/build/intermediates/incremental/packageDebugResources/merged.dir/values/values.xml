@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="alignment_array" translatable="false">
+        <item>@string/alignment_none</item>
+        <item>@string/alignment_left</item>
+        <item>@string/alignment_center</item>
+        <item>@string/alignment_right</item>
+    </string-array>
+    <string-array name="alignment_key_array" translatable="false">
+        <item>none</item>
+        <item>left</item>
+        <item>center</item>
+        <item>right</item>
+    </string-array>
+    <bool name="is_large_tablet_landscape">false</bool>
+    <bool name="show_extra_side_padding">false</bool>
+    <color name="format_bar_background">#f9fbfc</color>
+    <color name="format_bar_button_highlighted_color">@color/wp_blue</color>
+    <color name="format_bar_button_normal_color">@color/wp_gray_lighten_10</color>
+    <color name="format_bar_divider">@color/wp_gray_lighten_10</color>
+    <color name="format_bar_ripple_animation">@color/wp_gray_lighten_10</color>
+    <color name="image_options_label">@color/wp_gray</color>
+    <color name="legacy_format_bar_background">#eeeeee</color>
+    <color name="legacy_format_bar_button_selected">#00aadc</color>
+    <color name="legacy_placeholder_content_text">#21759B</color>
+    <color name="legacy_pressed_wordpress">#CC78C8E6</color>
+    <color name="sourceview_placeholder_text">@color/wp_gray</color>
+    <color name="sourceview_separator">@color/wp_gray_lighten_30</color>
+    <color name="wp_blue">#0087be</color>
+    <color name="wp_blue_dark">#005082</color>
+    <color name="wp_blue_light">#78dcfa</color>
+    <color name="wp_blue_medium">#00aadc</color>
+    <color name="wp_gray">#87a6bc</color>
+    <color name="wp_gray_light">#f3f6f8</color>
+    <color name="wp_gray_lighten_10">#a8bece</color>
+    <color name="wp_gray_lighten_20">#c8d7e1</color>
+    <color name="wp_gray_lighten_30">#e9eff3</color>
+    <declare-styleable name="SourceViewEditText"><attr format="string" name="fontFile"/></declare-styleable>
+    <dimen name="format_bar_button_group_tablet">@dimen/format_bar_button_group_tablet_small</dimen>
+    <dimen name="format_bar_button_group_tablet_extra_large">35dp</dimen>
+    <dimen name="format_bar_button_group_tablet_large">25dp</dimen>
+    <dimen name="format_bar_button_group_tablet_small">15dp</dimen>
+    <dimen name="format_bar_button_margin_tablet">@dimen/format_bar_button_margin_tablet_small</dimen>
+    <dimen name="format_bar_button_margin_tablet_extra_large">12dp</dimen>
+    <dimen name="format_bar_button_margin_tablet_large">7dp</dimen>
+    <dimen name="format_bar_button_margin_tablet_small">0dp</dimen>
+    <dimen name="format_bar_height">44dp</dimen>
+    <dimen name="format_bar_height_tablet">49dp</dimen>
+    <dimen name="format_bar_horizontal_divider_height">1dp</dimen>
+    <dimen name="format_bar_html_button_left_margin">3dp</dimen>
+    <dimen name="format_bar_left_margin">5dp</dimen>
+    <dimen name="format_bar_right_margin">2dp</dimen>
+    <dimen name="format_bar_scroll_right_margin">-7dp</dimen>
+    <dimen name="format_bar_vertical_divider_height">28dp</dimen>
+    <dimen name="format_bar_vertical_divider_width">0.6dp</dimen>
+    <dimen name="image_settings_dialog_extra_margin">0dp</dimen>
+    <dimen name="image_settings_dialog_extra_margin_tablet">84dp</dimen>
+    <dimen name="image_settings_dialog_filename_margin_left">16dp</dimen>
+    <dimen name="image_settings_dialog_input_field_start_margin">-4dp</dimen>
+    <dimen name="image_settings_dialog_input_margin_bottom">16dp</dimen>
+    <dimen name="image_settings_dialog_label_indent">4dp</dimen>
+    <dimen name="image_settings_dialog_label_margin_bottom">4dp</dimen>
+    <dimen name="image_settings_dialog_padding">16dp</dimen>
+    <dimen name="image_settings_dialog_thumbnail_container_margin_bottom">8dp</dimen>
+    <dimen name="image_settings_dialog_thumbnail_left_margin">4dp</dimen>
+    <dimen name="image_settings_dialog_thumbnail_right_margin">8dp</dimen>
+    <dimen name="image_settings_dialog_thumbnail_size">100dp</dimen>
+    <dimen name="image_settings_dialog_top_separator_margin_top">16dp</dimen>
+    <dimen name="legacy_format_bar_height">40dp</dimen>
+    <dimen name="link_dialog_margin_inner">4dp</dimen>
+    <dimen name="link_dialog_margin_outer">16dp</dimen>
+    <dimen name="margin_extra_large">16dp</dimen>
+    <dimen name="margin_extra_small">2dp</dimen>
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="post_editor_content_side_margin">20dp</dimen>
+    <dimen name="sourceview_side_margin">15dp</dimen>
+    <dimen name="sourceview_side_margin_extra_large">170dp</dimen>
+    <dimen name="sourceview_side_margin_large">90dp</dimen>
+    <dimen name="sourceview_title_bottom_margin">15dp</dimen>
+    <dimen name="sourceview_top_margin">15dp</dimen>
+    <string name="alert_action_while_uploading">You are currently uploading media. Please wait until this completes.</string>
+    <string name="alert_error_adding_media">An error occurred while inserting media</string>
+    <string name="alert_insert_image_html_mode">Can\'t insert media directly in HTML mode. Please switch back to visual mode.</string>
+    <string name="alignment_center">Center</string>
+    <string name="alignment_left">Left</string>
+    <string name="alignment_none">None</string>
+    <string name="alignment_right">Right</string>
+    <string name="app_name">Editor</string>
+    <string name="cancel">Cancel</string>
+    <string name="caption">Caption (optional)</string>
+    <string name="create_a_link">Create a link</string>
+    <string name="delete">Delete</string>
+    <string name="discard">Discard</string>
+    <string name="edit">Edit</string>
+    <string name="editor_dropped_html_images_not_allowed">Dropping images while in HTML mode is not allowed</string>
+    <string name="editor_dropped_text_error">Error occurred while dropping text</string>
+    <string name="editor_dropped_title_images_not_allowed">Dropping images in the Title is not allowed</string>
+    <string name="editor_dropped_unsupported_files">Warning: not all dropped items are supported!</string>
+    <string name="editor_failed_uploads_switch_html">Some media uploads have failed. You can\'t switch to HTML mode
+        in this state. Remove all failed uploads and continue?</string>
+    <string name="editor_remove_failed_uploads">Remove failed uploads</string>
+    <string name="featured">Use as featured image</string>
+    <string name="featured_in_post">Include image in post content</string>
+    <string name="format_bar_description_bold">Bold</string>
+    <string name="format_bar_description_html">HTML mode</string>
+    <string name="format_bar_description_italic">Italic</string>
+    <string name="format_bar_description_link">Insert link</string>
+    <string name="format_bar_description_media">Insert media</string>
+    <string name="format_bar_description_more">Insert more</string>
+    <string name="format_bar_description_ol">Ordered list</string>
+    <string name="format_bar_description_quote">Block quote</string>
+    <string name="format_bar_description_strike">Strikethrough</string>
+    <string name="format_bar_description_ul">Unordered list</string>
+    <string name="format_bar_description_underline">Underline</string>
+    <string name="format_bar_tag_blockquote" translatable="false">blockquote</string>
+    <string name="format_bar_tag_bold" translatable="false">bold</string>
+    <string name="format_bar_tag_italic" translatable="false">italic</string>
+    <string name="format_bar_tag_link" translatable="false">link</string>
+    <string name="format_bar_tag_orderedList" translatable="false">orderedList</string>
+    <string name="format_bar_tag_strikethrough" translatable="false">strikeThrough</string>
+    <string name="format_bar_tag_unorderedList" translatable="false">unorderedList</string>
+    <string name="horizontal_alignment">Horizontal alignment</string>
+    <string name="image_alignment">Alignment</string>
+    <string name="image_alt_text">Alt text</string>
+    <string name="image_caption">Caption</string>
+    <string name="image_link_to">Link to</string>
+    <string name="image_settings">Image settings</string>
+    <string name="image_settings_dismiss_dialog_title">Discard unsaved changes?</string>
+    <string name="image_settings_save_toast">Changes saved</string>
+    <string name="image_thumbnail">Image thumbnail</string>
+    <string name="image_width">Width</string>
+    <string name="link_enter_url">URL</string>
+    <string name="link_enter_url_text">Link text (optional)</string>
+    <string name="ok">OK</string>
+    <string name="post_content">Content</string>
+    <string name="post_settings">Settings</string>
+    <string name="post_title">Title</string>
+    <string name="save">Save</string>
+    <string name="stop_upload_button">Stop Upload</string>
+    <string name="stop_upload_dialog_title">Stop uploading?</string>
+    <string name="tap_to_try_again">Tap to try again!</string>
+    <string name="title">Title</string>
+    <string name="uploading">Uploading…</string>
+    <string name="uploading_gallery_placeholder">Uploading gallery…</string>
+    <string name="visual_editor">Visual editor</string>
+    <string name="width">Width</string>
+    <style name="Divider">
+        <item name="android:background">@color/format_bar_divider</item>
+    </style>
+    <style name="DividerSourceView">
+        <item name="android:background">@color/sourceview_separator</item>
+    </style>
+    <style name="FormatBarButton">
+        <item name="android:minWidth">@dimen/format_bar_height</item>
+        <item name="android:minHeight">@dimen/format_bar_height</item>
+        <item name="android:textOn">""</item>
+        <item name="android:textOff">""</item>
+    </style>
+    <style name="FormatBarButtonTablet" parent="FormatBarButton">
+        <item name="android:layout_marginRight">@dimen/format_bar_button_margin_tablet</item>
+        <item name="android:layout_marginLeft">@dimen/format_bar_button_margin_tablet</item>
+    </style>
+    <style name="FormatBarHtmlButton" parent="FormatBarButton">
+        <item name="android:layout_marginLeft">@dimen/format_bar_html_button_left_margin</item>
+    </style>
+    <style name="FormatBarTabletGroup">
+        <item name="android:layout_marginLeft">@dimen/format_bar_button_group_tablet</item>
+        <item name="android:layout_marginRight">@dimen/format_bar_button_group_tablet</item>
+    </style>
+    <style name="ImageOptionsDialogInput">
+        <item name="android:layout_marginBottom">@dimen/image_settings_dialog_input_margin_bottom</item>
+    </style>
+    <style name="ImageOptionsDialogLabel">
+        <item name="android:textColor">@color/image_options_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/image_settings_dialog_label_indent</item>
+        <item name="android:layout_marginBottom">@dimen/image_settings_dialog_label_margin_bottom</item>
+    </style>
+    <style name="LegacyToggleButton">
+        <item name="android:minWidth">@dimen/legacy_format_bar_height</item>
+        <item name="android:minHeight">@dimen/legacy_format_bar_height</item>
+        <item name="android:textOn">""</item>
+        <item name="android:textOff">""</item>
+    </style>
+</resources>

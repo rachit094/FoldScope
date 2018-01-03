@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="show_extra_side_padding">true</bool>
+    <dimen name="image_settings_dialog_extra_margin">@dimen/image_settings_dialog_extra_margin_tablet</dimen>
+    <dimen name="sourceview_side_margin">@dimen/sourceview_side_margin_large</dimen>
+</resources>

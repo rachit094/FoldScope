@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_ad_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Research"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:textColor="@color/colorLochinvar"
+        android:textSize="@dimen/dp20"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/img_ad_story"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp180"
+        android:scaleType="fitXY"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:src="@drawable/test" />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_ad_disc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp16"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:text="Title, featured image (if available), brief about the blog, author image, author name, date posted on will be shown in a list view manner"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:orientation="horizontal">
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="@dimen/dp30"-->
+            <!--android:layout_height="@dimen/dp30"-->
+            <!--android:id="@+id/view6"-->
+            <!--app:cardCornerRadius="@dimen/dp15"-->
+            <!--android:innerRadius="0dp"-->
+            <!--android:layout_marginLeft="@dimen/dp10"-->
+            <!--android:shape="ring"-->
+            <!--android:thicknessRatio="1.9">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/img_ad_profile"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--android:src="@drawable/man" />-->
+        <!--</android.support.v7.widget.CardView>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_ad_profile"
+            android:layout_width="@dimen/dp35"
+            android:layout_height="@dimen/dp35"
+            android:layout_gravity="center"
+            android:src="@drawable/test"
+            app:border_color="@color/colorGrey"
+            app:border_width="1dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp5">
+
+            <TextView
+                android:id="@+id/tv_ad_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/colorTransperent"
+                android:gravity="left"
+                android:text="Test Name"
+                android:textColor="@color/colorLochinvar"
+                android:textSize="@dimen/dp14" />
+
+            <TextView
+                android:id="@+id/tv_ad_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ad_name"
+                android:gravity="center"
+                android:text="Test Time"
+                android:textSize="@dimen/dp12" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_ad_views"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="right"
+            android:text="11K views"
+            android:textSize="@dimen/dp12" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_marginBottom="@dimen/dp15"
+        android:background="@color/colorGrey" />
+
+</LinearLayout>

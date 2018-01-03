@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_user_story_ru"
+        android:icon="@drawable/read"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_camera_ru"
+        android:icon="@drawable/camera"
+        android:title="Camera" />
+
+    <item
+        android:id="@+id/navigation_create_blog_ru"
+        android:icon="@drawable/blogwrite"
+        android:title="Create Blog" />
+
+    <item
+        android:id="@+id/navigation_profile_ru"
+        android:icon="@drawable/menu"
+        android:title="Menu" />
+
+</menu>

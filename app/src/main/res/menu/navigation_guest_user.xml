@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_user_story"
+        android:icon="@drawable/read"
+        android:title="@string/user_story" />
+
+    <item
+        android:id="@+id/navigation_camera"
+        android:icon="@drawable/camera"
+        android:title="@string/camera" />
+
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@drawable/userlogout"
+        android:title="@string/login" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:layout_width="wrap_content"
+        android:icon="@drawable/menu"
+        android:title="@string/menu" />
+
+</menu>

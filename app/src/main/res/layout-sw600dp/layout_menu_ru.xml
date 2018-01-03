@@ -1,0 +1,182 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Fragment.Profile_GU">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/rlmain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp150"
+        android:layout_below="@+id/view2"
+        android:layout_marginTop="@dimen/dp1"
+        android:background="@color/colorLochinvar"
+        android:orientation="vertical">
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:id="@+id/view6"-->
+            <!--android:layout_width="@dimen/dp80"-->
+            <!--android:layout_height="@dimen/dp80"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="@dimen/dp10"-->
+            <!--android:elevation="@dimen/dp12"-->
+            <!--android:innerRadius="0dp"-->
+            <!--android:shape="ring"-->
+            <!--android:thicknessRatio="1.9"-->
+            <!--app:cardCornerRadius="@dimen/dp40">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/img_ru_profile"-->
+                <!--android:layout_width="@dimen/dp80"-->
+                <!--android:layout_height="@dimen/dp80"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:background="@drawaspinner_imagemage"-->
+                <!--android:src="@drawable/test"></ImageView>-->
+        <!--</android.support.v7.widget.CardView>-->
+        <!--<ImageView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="@drawable/image_circle"/>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_ru_profile"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_gravity="center"
+            android:src="@drawable/test"
+            app:border_color="@color/colorGrey"
+            app:border_width="3dp" />
+        <TextView
+            android:id="@+id/tv_ru_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Test Name"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_ru_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Test Name"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dp10" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1">
+
+        <ImageView
+            android:id="@+id/img4"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp40"
+            android:src="@drawable/myexperiences" />
+
+        <Button
+            android:id="@+id/b_my_experience"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/img4"
+            android:background="@color/colorTransperent"
+            android:gravity="center_vertical|left"
+            android:text="My Experiments"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/dp15" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@+id/rl1"
+        android:background="@color/colorGrey" />
+
+    <RelativeLayout
+        android:id="@+id/rl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1">
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp40"
+            android:src="@drawable/byfoldscope" />
+
+        <Button
+            android:id="@+id/b_buy_foldscope"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/img2"
+            android:background="@color/colorTransperent"
+            android:gravity="center_vertical|left"
+            android:text="Buy FoldScope"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/dp15" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_below="@+id/rl1"
+        android:background="@color/colorGrey" />
+
+    <RelativeLayout
+        android:id="@+id/rl4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1">
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp40"
+            android:src="@drawable/logout" />
+
+        <Button
+            android:id="@+id/b_logout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/img3"
+            android:background="@color/colorTransperent"
+            android:gravity="center_vertical|left"
+            android:text="Logout"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/dp15" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_below="@+id/rl1"
+        android:background="@color/colorGrey" />
+
+</LinearLayout>

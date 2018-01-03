@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.blackpearl.foldscope.Activity.ViewBlog">
+    <TextView
+        android:id="@+id/tv_ad_title_bv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Research"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:textColor="@color/colorLochinvar"
+        android:textSize="@dimen/dp20"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp5"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dp5">
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="@dimen/dp30"-->
+            <!--android:layout_height="@dimen/dp30"-->
+            <!--android:id="@+id/view6"-->
+            <!--app:cardCornerRadius="@dimen/dp15"-->
+            <!--android:innerRadius="0dp"-->
+            <!--android:layout_marginLeft="@dimen/dp10"-->
+            <!--android:shape="ring"-->
+            <!--android:thicknessRatio="1.9">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/img_ad_profile_bv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:src="@drawable/man" />-->
+        <!--</android.support.v7.widget.CardView>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_ad_profile_bv"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center"
+            android:src="@drawable/test"
+            app:border_color="@color/colorGrey"
+            app:border_width="1dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp5">
+
+            <TextView
+                android:id="@+id/tv_ad_name_bv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/colorTransperent"
+                android:gravity="left"
+                android:text="Test Name"
+                android:textColor="@color/colorLochinvar"
+                android:textSize="@dimen/dp12" />
+
+            <TextView
+                android:id="@+id/tv_ad_time_bv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ad_name_bv"
+                android:gravity="center"
+                android:text="Test Time"
+                android:textSize="@dimen/dp10" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!--<WebView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/wv_view_blog">-->
+    <!--</WebView>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginLeft="@dimen/dp10"-->
+        <!--android:layout_marginRight="@dimen/dp10"-->
+        <!--android:layout_marginTop="@dimen/dp5"-->
+        <!--android:id="@+id/tv_view_blog_desc"/>-->
+
+        <WebView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:id="@+id/wv_view_blog"></WebView>
+    </ScrollView>
+</LinearLayout>

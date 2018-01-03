@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="is_large_tablet_landscape">true</bool>
+    <dimen name="format_bar_button_group_tablet">@dimen/format_bar_button_group_tablet_extra_large</dimen>
+    <dimen name="format_bar_button_margin_tablet">@dimen/format_bar_button_margin_tablet_extra_large</dimen>
+    <dimen name="sourceview_side_margin">@dimen/sourceview_side_margin_extra_large</dimen>
+</resources>
