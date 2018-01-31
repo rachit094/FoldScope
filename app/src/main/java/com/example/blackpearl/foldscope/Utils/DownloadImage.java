@@ -14,7 +14,7 @@ public class DownloadImage extends AsyncTask<Void, Void, Integer> {
 
     public Context caller;
     public int result = -1;
-    private File root, dir;
+    private File root,dir;
     private ArrayList<AllPostData> allPostDataArrayList;
     DataBaseHelper dataBaseHelper;
 
@@ -27,25 +27,31 @@ public class DownloadImage extends AsyncTask<Void, Void, Integer> {
         if (dir.exists() == false) {
             dir.mkdirs();
         }
-    }
+        else
+        {
+            Utility.DeleteFile(dir.getPath());
+            dir.mkdirs();
+        }
 
-    protected void onPreExecute() {
-
-        Utility.DeleteFile(dir.getPath());
         dataBaseHelper = new DataBaseHelper(caller);
         dataBaseHelper.CreateDatabase();
         dataBaseHelper.Open();
         dataBaseHelper.DeleteAllDataFromTableName("UserPost");
     }
 
-    protected Integer doInBackground(Void... arg0) {
+    protected void onPreExecute() {
 
+    }
+
+    protected Integer doInBackground(Void... arg0) {
         if (dir.exists() == false) {
             dir.mkdirs();
         }
+
         for (int j = 0; j < 5; j++) {
-            String PathPost = Utility.DownloadImage(allPostDataArrayList.get(j).getEventPic(), Utility.Filename(dir, allPostDataArrayList.get(j).getTitle()));
-            String PathProfile = Utility.DownloadImage("http:" + allPostDataArrayList.get(j).getProfilePic(), Utility.Filename(dir, allPostDataArrayList.get(j).getTitle()));
+            String PathPost=null,PathProfile=null;
+            PathPost = Utility.DownloadImage(allPostDataArrayList.get(j).getEventPic(),Utility.Filename(dir,""));
+            PathProfile = Utility.DownloadImage("http:" + allPostDataArrayList.get(j).getProfilePic(),Utility.Filename(dir,""));
             ContentValues contentValues = new ContentValues();
             contentValues.put("Title", allPostDataArrayList.get(j).getTitle());
             contentValues.put("Description", allPostDataArrayList.get(j).getDescription());
@@ -55,12 +61,13 @@ public class DownloadImage extends AsyncTask<Void, Void, Integer> {
             contentValues.put("PostPic", PathPost);
             contentValues.put("DescriptionAll", allPostDataArrayList.get(j).getAllDescription());
             dataBaseHelper.InsertIntoTable("UserPost", contentValues);
+
         }
         return result;
     }
 
     protected void onPostExecute(Integer result) {
-
+        dataBaseHelper.close();
     }
 }
 

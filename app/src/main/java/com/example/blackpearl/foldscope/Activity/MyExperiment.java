@@ -2,7 +2,6 @@ package com.example.blackpearl.foldscope.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -16,11 +15,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.blackpearl.foldscope.Adapter.AllPostAdapter;
 import com.example.blackpearl.foldscope.Adapter.MyExperimentAdapter;
 import com.example.blackpearl.foldscope.Api.MyExperimentsAPI;
-import com.example.blackpearl.foldscope.Database.DataBaseHelper;
-import com.example.blackpearl.foldscope.Model.AllPostData;
 import com.example.blackpearl.foldscope.Model.MyExperimentData;
 import com.example.blackpearl.foldscope.R;
 import com.example.blackpearl.foldscope.Utils.Const;

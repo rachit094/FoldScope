@@ -124,7 +124,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         final LinearLayoutManager layoutManager = new LinearLayoutManager(SearchActivity.this);
                         Rv_UserStory.setLayoutManager(layoutManager);
                         Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
-                        allPostAdapter = new AllPostAdapter(SearchActivity.this, allPostDataArrayList1);
+                        allPostAdapter = new AllPostAdapter(SearchActivity.this, allPostDataArrayList1,false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
                         Rv_UserStory.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -149,7 +149,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                                             } else {
                                                 allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList.subList(0, allPostDataArrayList.size()));
                                             }
-                                            allPostAdapter = new AllPostAdapter(SearchActivity.this, allPostDataArrayList1);
+                                            allPostAdapter = new AllPostAdapter(SearchActivity.this, allPostDataArrayList1,false);
                                             Rv_UserStory.setAdapter(allPostAdapter);
                                             End = End + 5;
                                         }

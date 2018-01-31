@@ -227,7 +227,7 @@ public class WebInterface {
         httppost.setHeader("Content-Type", "multipart/form-data");
         httppost.setHeader("Authorization", "Bearer " + Token);
         httppost.setHeader("Content-Disposition", "attachment; filename=" + fileName);
-        httppost.setHeader("media_type", "file");
+        httppost.setHeader("media_type", Type);
         httppost.setEntity(new ByteArrayEntity(byteArray));
         HttpResponse httpResponse = httpClient.execute(httppost);
         apiResponse = new ApiResponse();

@@ -25,6 +25,7 @@ public class AllPostAdapter extends RecyclerView.Adapter<AllPostAdapter.MyViewHo
 
     Context caller;
     public ArrayList<AllPostData> allPostDataArrayList;
+    public boolean Check;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -51,10 +52,11 @@ public class AllPostAdapter extends RecyclerView.Adapter<AllPostAdapter.MyViewHo
         }
     }
 
-    public AllPostAdapter(Context context, ArrayList<AllPostData> allPostDataArrayList) {
+    public AllPostAdapter(Context context, ArrayList<AllPostData> allPostDataArrayList,boolean Check) {
 
         this.caller = context;
         this.allPostDataArrayList = allPostDataArrayList;
+        this.Check = Check;
     }
 
     @Override
@@ -125,32 +127,63 @@ public class AllPostAdapter extends RecyclerView.Adapter<AllPostAdapter.MyViewHo
                 caller.startActivity(intent);
             }
         });
-        if (Utility.isOnline(caller)) {
-            Picasso.with(caller)
-                    .load(allPostDataArrayList.get(position).getEventPic()).centerCrop().fit()
-                    .placeholder(R.drawable.test)
-                    .error(R.drawable.test)
-                    .into(holder.Img_Event);
-            String Pic = "http:" + allPostDataArrayList.get(position).getProfilePic();
-            Picasso.with(caller)
-                    .load(Pic).centerCrop().fit()
-                    .placeholder(R.drawable.test)
-                    .error(R.drawable.test)
-                    .into(holder.Img_Profile);
-        } else {
-            Uri uri = Uri.fromFile(new File(allPostDataArrayList.get(position).getEventPic()));
-            Uri uri1 = Uri.fromFile(new File(allPostDataArrayList.get(position).getProfilePic()));
-            Picasso.with(caller)
-                    .load(uri)
-                    .placeholder(R.drawable.test)
-                    .error(R.drawable.test)
-                    .into(holder.Img_Event);
-            Picasso.with(caller)
-                    .load(uri1)
-                    .placeholder(R.drawable.test)
-                    .error(R.drawable.test)
-                    .into(holder.Img_Profile);
+        if (Check)
+        {
+                Uri uri = Uri.fromFile(new File(allPostDataArrayList.get(position).getEventPic()));
+                Uri uri1 = Uri.fromFile(new File(allPostDataArrayList.get(position).getProfilePic()));
+
+                System.out.println("Profile Pic"+uri1);
+                System.out.println("Event Pic"+uri);
+
+                Picasso.with(caller)
+                        .load(uri).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Event);
+                Picasso.with(caller)
+                        .load(uri1).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Profile);
+
+
         }
+        else
+        {
+            if (Utility.isOnline(caller)) {
+                Picasso.with(caller)
+                        .load(allPostDataArrayList.get(position).getEventPic()).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Event);
+                String Pic = "http:" + allPostDataArrayList.get(position).getProfilePic();
+                Picasso.with(caller)
+                        .load(Pic).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Profile);
+            } else {
+                Uri uri = Uri.fromFile(new File(allPostDataArrayList.get(position).getEventPic()));
+                Uri uri1 = Uri.fromFile(new File(allPostDataArrayList.get(position).getProfilePic()));
+
+                System.out.println("Profile Pic"+uri1);
+                System.out.println("Event Pic"+uri);
+
+                Picasso.with(caller)
+                        .load(uri).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Event);
+                Picasso.with(caller)
+                        .load(uri1).centerCrop().fit()
+                        .placeholder(R.drawable.test)
+                        .error(R.drawable.test)
+                        .into(holder.Img_Profile);
+            }
+        }
+
+
+
     }
 
     @Override

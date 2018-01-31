@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -150,9 +151,10 @@ public class Utility {
         }
     }
 
-    public static String DownloadImage(String url1, String path) {
+    public static String DownloadImage(String url1,String Path) {
         // initilize the default HTTP client object
         String TAG = "Download Image";
+
         try {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -165,7 +167,7 @@ public class Utility {
             ucon.connect();
             InputStream is = ucon.getInputStream();
             BufferedInputStream inStream = new BufferedInputStream(is, 1024 * 5);
-            FileOutputStream outStream = new FileOutputStream(path);
+            FileOutputStream outStream = new FileOutputStream(Path);
             byte[] buff = new byte[5 * 1024];
             int len;
             while ((len = inStream.read(buff)) != -1) {
@@ -177,7 +179,7 @@ public class Utility {
         } catch (Exception e) {
             LogE(TAG, "Download Error----->" + e.toString());
         }
-        return path;
+        return Path;
     }
 
     public static String Filename(File file, String Title) {

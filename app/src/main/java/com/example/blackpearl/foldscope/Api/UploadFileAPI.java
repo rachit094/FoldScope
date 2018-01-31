@@ -41,7 +41,10 @@ public class UploadFileAPI extends AsyncTask<Void, Void, Integer> {
 
         ApiResponse apiResponse = null;
         try {
+            System.out.println("Token"+Token);
+            System.out.println("FilePath"+FilePath);
             apiResponse = WebInterface.doPostForUploadFile(Const.URL_UPLOAD_MEDIA, Type, Token, FilePath);
+
             result = apiResponse.code;
             if (apiResponse.response != null
                     && !apiResponse.response.equals("")) {
@@ -78,6 +81,8 @@ public class UploadFileAPI extends AsyncTask<Void, Void, Integer> {
         try {
             JSONObject Response = new JSONObject(response);
             SourceUrl = Response.optString("source_url");
+//            SourceUrl = Response.getJSONObject("description").optString("rendered");
+            System.out.println("Video Url API---->"+SourceUrl);
             if (SourceUrl != null) {
             } else {
                 Message = Response.optString("code");

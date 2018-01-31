@@ -1,7 +1,10 @@
 package com.example.blackpearl.foldscope.Api;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -112,8 +115,10 @@ public class AllPostAPI extends AsyncTask<Void, Void, Integer> {
                 if (m.find()) {
                     imgSrc = m.group(1);
                 }
+
                 allPostData.setEventPic(imgSrc);
                 allPostDataArrayList.add(allPostData);
+
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -12,6 +12,8 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Typeface;
 import android.hardware.Camera;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
@@ -118,7 +120,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
     private EditText ET_UserName, ET_Password;
     private String UserName, Password;
     private Button Login;
-    private Button Login1, Registration, BTNBuyFoldScope;
+    private Button Registration, BTNBuyFoldScope;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -265,7 +267,6 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(GuestUser.this, R.string.connection_error, Toast.LENGTH_LONG).show();
                 }
                 break;
-
             case R.id.b_login_frg:
                 if (Utility.isOnline(GuestUser.this)) {
                     Intent intent2 = new Intent(GuestUser.this, LoginActivity.class);
@@ -305,66 +306,36 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
         categoryDataArrayList = new ArrayList<CategoryData>();
         Categories = new ArrayList<String>();
         Categories.add(0, "ALL");
-//        if (Utility.isOnline(GuestUser.this)) {
-//            myDialog = Utility.ShowProgressDialog(GuestUser.this, "Please Wait");
-//            new UserDataAPI(GuestUser.this, responseListener).execute();
-//            new GetCategoriesAPI(GuestUser.this, responseListener).execute();
-//            Sp_Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                    String Name = Sp_Category.getSelectedItem().toString();
-//                    if (Name.equals("ALL")) {
-//                        new AllPostAPI(GuestUser.this, responseListener).execute();
-//                    } else {
-//                        myDialog = Utility.ShowProgressDialog(GuestUser.this, "Please Wait");
-//                        String CategoryId = null;
-//                        for (int j = 0; j < categoryDataArrayList.size(); j++) {
-//                            if (Sp_Category.getSelectedItem().toString().equals(categoryDataArrayList.get(j).getCategories_title())) {
-//                                CategoryId = categoryDataArrayList.get(j).getCategories_id();
-//                            }
-//                        }
-//                        new CategorywisePostAPI(GuestUser.this, responseListener, CategoryId).execute();
-//                    }
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//                }
-//            });
-//        } else {
-            ArrayList<AllPostData> allPostDataArrayList = new ArrayList<AllPostData>();
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(GuestUser.this);
-            dataBaseHelper.CreateDatabase();
-            dataBaseHelper.Open();
-            Cursor cursor = dataBaseHelper.SelectAllDataFromTable("UserPost");
-            if (cursor != null && cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    AllPostData allPostData = new AllPostData();
-                    allPostData.setTitle(cursor.getString(cursor.getColumnIndex("Title")));
-                    allPostData.setDescription(cursor.getString(cursor.getColumnIndex("Description")));
-                    allPostData.setName(cursor.getString(cursor.getColumnIndex("UserName")));
-                    allPostData.setTime(cursor.getString(cursor.getColumnIndex("Date")));
-                    allPostData.setProfilePic(cursor.getString(cursor.getColumnIndex("ProfilePic")));
-                    allPostData.setEventPic(cursor.getString(cursor.getColumnIndex("PostPic")));
-                    allPostData.setAllDescription(cursor.getString(cursor.getColumnIndex("DescriptionAll")));
-                    allPostDataArrayList.add(allPostData);
-                } while (cursor.moveToNext());
-                Img_Search.setVisibility(View.GONE);
-                Rv_UserStory.setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GuestUser.this);
-                Rv_UserStory.setLayoutManager(layoutManager);
-                Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
-                allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList);
-                Rv_UserStory.setAdapter(allPostAdapter);
-                allPostAdapter.notifyDataSetChanged();
-            } else {
-                Rv_UserStory.setVisibility(View.INVISIBLE);
-                Tv_Msg.setVisibility(View.VISIBLE);
-            }
-//        }
+        ArrayList<AllPostData> allPostDataArrayList = new ArrayList<AllPostData>();
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(GuestUser.this);
+        dataBaseHelper.CreateDatabase();
+        dataBaseHelper.Open();
+        Cursor cursor = dataBaseHelper.SelectAllDataFromTable("UserPost");
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                AllPostData allPostData = new AllPostData();
+                allPostData.setTitle(cursor.getString(cursor.getColumnIndex("Title")));
+                allPostData.setDescription(cursor.getString(cursor.getColumnIndex("Description")));
+                allPostData.setName(cursor.getString(cursor.getColumnIndex("UserName")));
+                allPostData.setTime(cursor.getString(cursor.getColumnIndex("Date")));
+                allPostData.setProfilePic(cursor.getString(cursor.getColumnIndex("ProfilePic")));
+                allPostData.setEventPic(cursor.getString(cursor.getColumnIndex("PostPic")));
+                allPostData.setAllDescription(cursor.getString(cursor.getColumnIndex("DescriptionAll")));
+                allPostDataArrayList.add(allPostData);
+            } while (cursor.moveToNext());
+            Img_Search.setVisibility(View.GONE);
+            Rv_UserStory.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GuestUser.this);
+            Rv_UserStory.setLayoutManager(layoutManager);
+            Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
+            allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList, true);
+            Rv_UserStory.setAdapter(allPostAdapter);
+            allPostAdapter.notifyDataSetChanged();
+        } else {
+            Rv_UserStory.setVisibility(View.INVISIBLE);
+            Tv_Msg.setVisibility(View.VISIBLE);
+        }
         SwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -425,7 +396,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GuestUser.this);
                         Rv_UserStory.setLayoutManager(layoutManager);
                         Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
-                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList);
+                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
                     } else {
@@ -535,7 +506,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                 LayoutScale.setDrawingCacheEnabled(true);
                 LayoutScale.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-             //   LayoutScale.layout(0, 0, LayoutScale.getMeasuredWidth(), LayoutScale.getMeasuredHeight());
+                //   LayoutScale.layout(0, 0, LayoutScale.getMeasuredWidth(), LayoutScale.getMeasuredHeight());
                 LayoutScale.buildDrawingCache(true);
                 Bitmap b = Bitmap.createBitmap(LayoutScale.getDrawingCache());
                 LayoutScale.setDrawingCacheEnabled(false);
@@ -544,7 +515,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                 LayoutText.setDrawingCacheEnabled(true);
                 LayoutText.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-             //   LayoutText.layout(0, 0, LayoutText.getMeasuredWidth(), LayoutText.getMeasuredHeight());
+                //   LayoutText.layout(0, 0, LayoutText.getMeasuredWidth(), LayoutText.getMeasuredHeight());
                 LayoutText.buildDrawingCache(true);
                 Bitmap b1 = Bitmap.createBitmap(LayoutText.getDrawingCache());
                 ImageScale = Bitmap.createScaledBitmap(b, (int) getResources().getDimension(R.dimen.dp200), (int) getResources().getDimension(R.dimen.dp120), false);
@@ -627,8 +598,9 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
         Login = (Button) findViewById(R.id.b_login);
         Login.setOnClickListener(this);
     }
-    
-    private void  GuestUser_Layout(){
+
+    private void GuestUser_Layout() {
+
         Login = (Button) findViewById(R.id.b_login_frg);
         Login.setOnClickListener(this);
         Registration = (Button) findViewById(R.id.b_register_frg);
@@ -640,13 +612,13 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
     ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponse(String api, Const.API_RESULT result, Object obj) {
+
             End = 10;
             loading = true;
             pastVisiblesItems = 0;
             visibleItemCount = 0;
             totalItemCount = 0;
             SharedPreference.SharedPreference(GuestUser.this);
-
             if (api.equals(Const.URL_POST)) {
                 Img_Search.setVisibility(View.VISIBLE);
                 if (result == Const.API_RESULT.SUCCESS) {
@@ -676,7 +648,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                         } else {
                             allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList);
                         }
-                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1);
+                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
 //                        if (myDialog.isShowing()) {
@@ -706,7 +678,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                                             } else {
                                                 allPostDataArrayList2 = new ArrayList<AllPostData>(allPostDataArrayList.subList(0, allPostDataArrayList.size()));
                                             }
-                                            allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList2);
+                                            allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList2, false);
                                             Rv_UserStory.setAdapter(allPostAdapter);
                                         } else {
                                         }
@@ -769,7 +741,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                         } else {
                             allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList);
                         }
-                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1);
+                        allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
                         Rv_UserStory.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -794,7 +766,7 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                                             } else {
                                                 allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList.subList(0, allPostDataArrayList.size()));
                                             }
-                                            allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1);
+                                            allPostAdapter = new AllPostAdapter(GuestUser.this, allPostDataArrayList1, false);
                                             Rv_UserStory.setAdapter(allPostAdapter);
                                             allPostAdapter.notifyItemChanged(visibleItemCount);
                                             End = End + 5;
@@ -812,7 +784,6 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                     Rv_UserStory.setVisibility(View.GONE);
                 }
             }
-
             if (api.equals(Const.URL_TOKEN)) {
                 myDialog.dismiss();
                 if (result == Const.API_RESULT.SUCCESS) {
@@ -837,7 +808,6 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
                     contentValues.put("ToDate", ToDate);
                     contentValues.put("FromDate", FromDate);
                     dataBaseHelper.InsertIntoTable("Authentication", contentValues);
-
                     myDialog = Utility.ShowProgressDialog(GuestUser.this, "Please Wait");
                     new LoginAPI(GuestUser.this, responseListener, tokenDataArrayList.get(0).getToken()).execute();
                 }
@@ -881,14 +851,26 @@ public class GuestUser extends AppCompatActivity implements View.OnClickListener
         } catch (Exception e) {
             e.printStackTrace();
         }
+//        sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"
+//                + Environment.getExternalStorageDirectory())));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            final Intent scanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            final Uri contentUri = Uri.fromFile(file);
+            scanIntent.setData(contentUri);
+            sendBroadcast(scanIntent);
+        } else {
+            final Intent intent = new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory()));
+            sendBroadcast(intent);
+        }
     }
 
     public Bitmap OverlayImage(Bitmap bitmap1, Bitmap bitmap2, Bitmap bitmap3) {
+
         Bitmap overlayBitmap = Bitmap.createBitmap(bitmap1.getWidth(), bitmap1.getHeight(), bitmap1.getConfig());
         Canvas canvas = new Canvas(overlayBitmap);
         canvas.drawBitmap(bitmap1, new Matrix(), null);
         canvas.drawBitmap(bitmap2, (int) (canvas.getWidth() - bitmap2.getWidth() * 1.6), (int) (canvas.getHeight() - bitmap2.getHeight() * 1.6), null);
-        //  canvas.drawBitmap(bitmap3, canvas.getWidth() - (int) (bitmap3.getWidth() * 2.7), (int) (canvas.getHeight() - bitmap3.getHeight() * 2), null);
         return overlayBitmap;
     }
 

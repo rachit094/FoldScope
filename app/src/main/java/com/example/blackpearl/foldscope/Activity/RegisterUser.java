@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -14,10 +16,13 @@ import android.graphics.PointF;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -81,6 +86,7 @@ import org.wordpress.android.util.helpers.MediaFile;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -150,6 +156,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
     private TextView Name, Email;
     private String ProfilePath;
     private ImageView ProfileImage;
+    private String VideoPath, ThumbnailImage;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -321,20 +328,24 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
         String mediaId = String.valueOf(System.currentTimeMillis());
         mediaFile.setMediaId(mediaId);
         mediaFile.setVideo(mediaUri.toString().contains("video"));
-        System.out.println("Media Url--->" + mediaUri.getPath());
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mediaUri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String Media = getRealPathFromURI(mediaUri);
+        System.out.println("Media"+Media);
         switch (requestCode) {
             case ADD_MEDIA_ACTIVITY_REQUEST_CODE:
                 myDialog = Utility.ShowProgressDialog(RegisterUser.this, "Please Wait");
                 if (mediaUri.getPath().contains("mp4")) {
+                    VideoPath = mediaUri.getPath();
                     new UploadFileAPI(RegisterUser.this, responseListener1, mediaUri.getPath(), SharedPreference.getString(Const.PREF_TOKEN), "video").execute();
                 } else {
+
                     new UploadFileAPI(RegisterUser.this, responseListener1, mediaUri.getPath(), SharedPreference.getString(Const.PREF_TOKEN), "image").execute();
                 }
-//                mEditorFragment.appendMediaFile(mediaFile, mediaUri.toString(), null);
-//
-//                if (mEditorFragment instanceof EditorMediaUploadListener) {
-//                    simulateFileUpload(mediaId, mediaUri.toString());
-//                }
                 break;
             case ADD_MEDIA_FAIL_ACTIVITY_REQUEST_CODE:
                 mEditorFragment.appendMediaFile(mediaFile, mediaUri.toString(), null);
@@ -350,6 +361,20 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                 break;
         }
     }
+
+
+
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] proj = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(RegisterUser.this, contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_index);
+        cursor.close();
+        return result;
+    }
+
 
     @Override
     public void onSettingsClicked() {
@@ -628,66 +653,36 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
         categoryDataArrayList = new ArrayList<CategoryData>();
         Categories = new ArrayList<String>();
         Categories.add(0, "ALL");
-//        if (Utility.isOnline(RegisterUser.this)) {
-//            myDialog = Utility.ShowProgressDialog(RegisterUser.this, "Please Wait");
-//            new UserDataAPI(RegisterUser.this, responseListener).execute();
-//            new GetCategoriesAPI(RegisterUser.this, responseListener).execute();
-//            Sp_Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                    String Name = Sp_Category.getSelectedItem().toString();
-//                    if (Name.equals("ALL")) {
-//                        new AllPostAPI(RegisterUser.this, responseListener).execute();
-//                    } else {
-//                        myDialog = Utility.ShowProgressDialog(RegisterUser.this, "Please Wait");
-//                        String CategoryId = null;
-//                        for (int j = 0; j < categoryDataArrayList.size(); j++) {
-//                            if (Sp_Category.getSelectedItem().toString().equals(categoryDataArrayList.get(j).getCategories_title())) {
-//                                CategoryId = categoryDataArrayList.get(j).getCategories_id();
-//                            }
-//                        }
-//                        new CategorywisePostAPI(RegisterUser.this, responseListener, CategoryId).execute();
-//                    }
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//                }
-//            });
-//        } else {
-            ArrayList<AllPostData> allPostDataArrayList = new ArrayList<AllPostData>();
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(RegisterUser.this);
-            dataBaseHelper.CreateDatabase();
-            dataBaseHelper.Open();
-            Cursor cursor = dataBaseHelper.SelectAllDataFromTable("UserPost");
-            if (cursor != null && cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    AllPostData allPostData = new AllPostData();
-                    allPostData.setTitle(cursor.getString(cursor.getColumnIndex("Title")));
-                    allPostData.setDescription(cursor.getString(cursor.getColumnIndex("Description")));
-                    allPostData.setName(cursor.getString(cursor.getColumnIndex("UserName")));
-                    allPostData.setTime(cursor.getString(cursor.getColumnIndex("Date")));
-                    allPostData.setProfilePic(cursor.getString(cursor.getColumnIndex("ProfilePic")));
-                    allPostData.setEventPic(cursor.getString(cursor.getColumnIndex("PostPic")));
-                    allPostData.setAllDescription(cursor.getString(cursor.getColumnIndex("DescriptionAll")));
-                    allPostDataArrayList.add(allPostData);
-                } while (cursor.moveToNext());
-                Img_Search.setVisibility(View.GONE);
-                Rv_UserStory.setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RegisterUser.this);
-                Rv_UserStory.setLayoutManager(layoutManager);
-                Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
-                allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList);
-                Rv_UserStory.setAdapter(allPostAdapter);
-                allPostAdapter.notifyDataSetChanged();
-            } else {
-                Rv_UserStory.setVisibility(View.INVISIBLE);
-                Tv_Msg.setVisibility(View.VISIBLE);
-            }
-//        }
+        ArrayList<AllPostData> allPostDataArrayList = new ArrayList<AllPostData>();
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(RegisterUser.this);
+        dataBaseHelper.CreateDatabase();
+        dataBaseHelper.Open();
+        Cursor cursor = dataBaseHelper.SelectAllDataFromTable("UserPost");
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                AllPostData allPostData = new AllPostData();
+                allPostData.setTitle(cursor.getString(cursor.getColumnIndex("Title")));
+                allPostData.setDescription(cursor.getString(cursor.getColumnIndex("Description")));
+                allPostData.setName(cursor.getString(cursor.getColumnIndex("UserName")));
+                allPostData.setTime(cursor.getString(cursor.getColumnIndex("Date")));
+                allPostData.setProfilePic(cursor.getString(cursor.getColumnIndex("ProfilePic")));
+                allPostData.setEventPic(cursor.getString(cursor.getColumnIndex("PostPic")));
+                allPostData.setAllDescription(cursor.getString(cursor.getColumnIndex("DescriptionAll")));
+                allPostDataArrayList.add(allPostData);
+            } while (cursor.moveToNext());
+            Img_Search.setVisibility(View.GONE);
+            Rv_UserStory.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RegisterUser.this);
+            Rv_UserStory.setLayoutManager(layoutManager);
+            Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
+            allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList, true);
+            Rv_UserStory.setAdapter(allPostAdapter);
+            allPostAdapter.notifyDataSetChanged();
+        } else {
+            Rv_UserStory.setVisibility(View.INVISIBLE);
+            Tv_Msg.setVisibility(View.VISIBLE);
+        }
         SwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -748,7 +743,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RegisterUser.this);
                         Rv_UserStory.setLayoutManager(layoutManager);
                         Rv_UserStory.setItemAnimator(new DefaultItemAnimator());
-                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList);
+                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
                     } else {
@@ -1008,7 +1003,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                         } else {
                             allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList);
                         }
-                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1);
+                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
 //                        if (myDialog.isShowing()) {
@@ -1038,7 +1033,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                                             } else {
                                                 allPostDataArrayList2 = new ArrayList<AllPostData>(allPostDataArrayList.subList(0, allPostDataArrayList.size()));
                                             }
-                                            allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList2);
+                                            allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList2, false);
                                             Rv_UserStory.setAdapter(allPostAdapter);
                                         } else {
                                         }
@@ -1101,7 +1096,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                         } else {
                             allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList);
                         }
-                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1);
+                        allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1, false);
                         Rv_UserStory.setAdapter(allPostAdapter);
                         allPostAdapter.notifyDataSetChanged();
                         Rv_UserStory.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -1126,7 +1121,7 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                                             } else {
                                                 allPostDataArrayList1 = new ArrayList<AllPostData>(allPostDataArrayList.subList(0, allPostDataArrayList.size()));
                                             }
-                                            allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1);
+                                            allPostAdapter = new AllPostAdapter(RegisterUser.this, allPostDataArrayList1, false);
                                             Rv_UserStory.setAdapter(allPostAdapter);
                                             allPostAdapter.notifyItemChanged(visibleItemCount);
                                             End = End + 5;
@@ -1164,21 +1159,23 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
                 }
             }
             if (api.equals(Const.URL_UPLOAD_MEDIA)) {
+                myDialog.dismiss();
                 if (result == Const.API_RESULT.SUCCESS) {
-                    myDialog.dismiss();
                     MediaUrl = (String) obj;
                     if (MediaUrl == null) {
+                        Toast.makeText(RegisterUser.this, R.string.upload_media, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(RegisterUser.this, R.string.upload_media, Toast.LENGTH_LONG).show();
-                        if (MediaUrl.contains(".mp4")) {
-                        }
                         MediaFile mediaFile = new MediaFile();
                         String mediaId = String.valueOf(System.currentTimeMillis());
-                        mediaFile.setMediaId(mediaId);
-                        mEditorFragment.appendMediaFile(mediaFile, MediaUrl, null);
-                        if (mEditorFragment instanceof EditorMediaUploadListener) {
-                            simulateFileUpload(mediaId, MediaUrl.toString());
+                        mediaFile.setMediaId(MEDIA_REMOTE_ID_SAMPLE);
+                        if (MediaUrl.contains(".mp4")) {
+                            mediaFile.setVideo(true);
                         }
+                        mEditorFragment.appendMediaFile(mediaFile, MediaUrl, null);
+//                        if (mEditorFragment instanceof EditorMediaUploadListener) {
+//                            simulateFileUpload(mediaId, MediaUrl.toString());
+//                        }
                     }
                 }
             }
@@ -1204,9 +1201,20 @@ public class RegisterUser extends AppCompatActivity implements EditorFragmentAbs
             finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
-            CameraLayout();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+//        sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"
+//                + Environment.getExternalStorageDirectory())));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            final Intent scanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            final Uri contentUri = Uri.fromFile(file);
+            scanIntent.setData(contentUri);
+            sendBroadcast(scanIntent);
+        } else {
+            final Intent intent = new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory()));
+            sendBroadcast(intent);
         }
     }
 
